@@ -71,3 +71,16 @@ class Biblioteka2(object):
             print(komunikat)
 
 library = Biblioteka()
+
+k = int(input())
+
+for i in range(0, k):
+    wejscie = eval(input())
+    if wejscie[0] == "dodaj":
+        library.addEgzemplarz(wejscie)
+    elif wejscie[0] == "wypozycz":
+        library.wypozycz(wejscie[1],wejscie[2])
+    elif wejscie[0] == "oddaj":
+        library.oddaj(wejscie[1],wejscie[2])
+
+library.drukuj()
