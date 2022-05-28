@@ -47,11 +47,6 @@ class Biblioteka2(object):
             element1 = (element[0], element[1], element[2])
             print(element1)
 
-    def drukuj(self):
-        for komunikat in self.komunikaty:
-            print(komunikat)
-
-
     def wypozycz(self,nazwisko,tytul):
         if tytul in self.tytuly:
             self.czytelnik(nazwisko,tytul)
@@ -69,5 +64,10 @@ class Biblioteka2(object):
 
         else:
             self.komunikaty.append('False')
+
+
+    def drukuj(self):
+        for komunikat in self.komunikaty:
+            print(komunikat)
 
 library = Biblioteka()
