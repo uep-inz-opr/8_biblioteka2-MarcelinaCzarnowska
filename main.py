@@ -1,9 +1,9 @@
-class Biblioteka2(object):
+class Biblioteka(object):
     def __init__(self):
         self.ksiazki = []
-        self.tytuly=[]
         self.egzemplarze=[]
         self.czytelnicy= {}
+        self.tytuly=[]
         self.komunikaty=[]
 
     def addKsiazka(self, ksiazka):
@@ -21,6 +21,18 @@ class Biblioteka2(object):
             self.tytuly.append(egzemplarz1[1])
             self.komunikaty.append('True')
 
+    def liczenie(self):
+        listafinal=[]
+        listasort=[]
+        for ksiazka in self.ksiazki:
+            a = self.egzemplarze.count(ksiazka)
+            ksiazka1 = [ksiazka[0], ksiazka[1], a]
+            listafinal.append(ksiazka1)
+        listasort = sorted(listafinal, key=lambda x: x[0])
+        for element in listasort:
+            element1 = (element[0], element[1], element[2])
+            print(element1)
+
     def czytelnik(self, nazwisko, tytul):
         if nazwisko in self.czytelnicy:
             if len(self.czytelnicy[nazwisko]) < 3 and tytul not in self.czytelnicy[nazwisko]:
@@ -34,18 +46,6 @@ class Biblioteka2(object):
             self.czytelnicy[nazwisko].append(tytul)
             self.tytuly.remove(tytul)
             self.komunikaty.append('True')
-
-    def liczenie(self):
-        listafinal=[]
-        listasort=[]
-        for ksiazka in self.ksiazki:
-            a = self.egzemplarze.count(ksiazka)
-            ksiazka1 = [ksiazka[0], ksiazka[1], a]
-            listafinal.append(ksiazka1)
-        listasort = sorted(listafinal, key=lambda x: x[0])
-        for element in listasort:
-            element1 = (element[0], element[1], element[2])
-            print(element1)
 
     def wypozycz(self,nazwisko,tytul):
         if tytul in self.tytuly:
@@ -64,7 +64,6 @@ class Biblioteka2(object):
 
         else:
             self.komunikaty.append('False')
-
 
     def drukuj(self):
         for komunikat in self.komunikaty:
